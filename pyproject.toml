@@ -1,0 +1,4 @@
+[project]
+name = "Ambient Village"
+version = "0.1"
+dependencies = None
