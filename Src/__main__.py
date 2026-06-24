@@ -2,6 +2,7 @@
 
 import pygame
 import villager as vil
+import random
 
 # def start
 X_BOUNDARY = 1280
@@ -15,7 +16,6 @@ running = True
 
 # create an actor with a single want
 craig = vil.Villager()
-craig.goal = (1270, 700)
 
 
 # run loop
@@ -30,10 +30,12 @@ while running:
     # clears the previous frame
     screen.fill("white")
 
+    if craig.vel == (0.0, 0.0):
+        craig.goal[0] = random.uniform(0, X_BOUNDARY)
+        craig.goal[1] = random.uniform(0, Y_BOUNDARY)
     # find desired velocity vector and move
-
     craig.vel = craig.Seek()
-    craig.pos = (craig.pos[0] + craig.vel[0], craig.pos[1] + craig.vel[1])
+    craig.pos = pygame.Vector2(craig.pos) + craig.vel
     pygame.draw.circle(screen, "black", craig.pos, 6)
 
     # displays any newly rendered items 

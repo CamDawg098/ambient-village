@@ -1,5 +1,5 @@
 import pygame
-import random
+
 
 VILLAGER_BASE_SPEED = 10
 
@@ -9,9 +9,9 @@ class Villager:
     def __init__(self, name = "Craig"):
         self.name = name
         self.speed = VILLAGER_BASE_SPEED
-        self.vel = (0, 0)
-        self.pos = (0, 0)
-        self.goal = (0, 0)
+        self.vel = pygame.Vector2()
+        self.pos = pygame.Vector2()
+        self.goal = pygame.Vector2()
 
     def Seek(self):
         desired = pygame.math.Vector2((self.goal[0] - self.pos[0], self.goal[1] - self.pos[1]))
@@ -25,6 +25,3 @@ class Villager:
             desired.scale_to_length(self.speed)
         return desired
 
-
-
-def New_Goal():
